@@ -1,0 +1,38 @@
+services:
+  # ── Node.js / Express application ──────────────────────────────────────────
+  web:
+    build: .
+    container_name: inkwell_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+      # Points to the mongo_db service using Docker's internal DNS
+      MONGODB_URI: mongodb://mongo_db:27017/blog_db
+      # Override this with a real secret – never commit the real value
+      SESSION_SECRET: ${SESSION_SECRET:-change-me-to-a-long-random-string}
+    depends_on:
+      mongo_db:
+        condition: service_healthy
+
+  # ── MongoDB ─────────────────────────────────────────────────────────────────
+  mongo_db:
+    image: mongo:7
+    container_name: inkwell_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"   # optional: expose to host for local inspection (e.g. Compass)
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+# ── Named volume (persists MongoDB data across container restarts) ────────────
+volumes:
+  mongo_data:

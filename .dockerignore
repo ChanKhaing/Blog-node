@@ -1,0 +1,25 @@
+# Dependencies – installed fresh inside the image
+node_modules/
+
+# Git history
+.git/
+.gitignore
+
+# Secrets – injected at runtime via docker-compose environment
+.env
+
+# Editor & OS artefacts
+.DS_Store
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+*.log
+
+# Vercel deployment config (not needed in Docker)
+.vercel/
+vercel.json
+
+# Tailwind generated output – rebuilt inside the image
+public/css/style.css
