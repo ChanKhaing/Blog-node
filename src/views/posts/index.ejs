@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
+
+<main class="flex-1">
+  <div class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+    <span class="eyebrow">Explore</span>
+    <h1 class="mt-5 text-4xl font-bold text-ink-950">Every post on Inkwell</h1>
+    <p class="mt-3 max-w-xl text-ink-600">
+      <%= posts.length %> <%= posts.length === 1 ? 'post' : 'posts' %> published, newest first.
+    </p>
+
+    <div class="mt-10">
+      <%- include('../partials/blog-list', {
+        posts: posts,
+        showOwnerActions: false,
+        emptyHeading: 'No posts published yet',
+        emptyBody: 'The feed is empty for now. Create an account and publish the first story.',
+        emptyCtaHref: currentUser ? '/posts/new' : '/register',
+        emptyCtaLabel: currentUser ? 'Write a post' : 'Create an account'
+      }) %>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

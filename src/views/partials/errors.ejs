@@ -1,0 +1,10 @@
+<% if (errors && errors.length > 0) { %>
+  <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3" role="alert">
+    <p class="text-sm font-semibold text-red-800">Please fix the following:</p>
+    <ul class="mt-1.5 list-disc space-y-1 pl-5 text-sm text-red-700">
+      <% errors.forEach(function (error) { %>
+        <li><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>

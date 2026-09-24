@@ -1,0 +1,128 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+<%- include('partials/flash') %>
+
+<main class="flex-1">
+  <!-- Hero -->
+  <section class="grain-bg relative overflow-hidden">
+    <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+      <div>
+        <span class="eyebrow">Write &middot; Publish &middot; Share</span>
+
+        <h1 class="mt-6 text-4xl font-bold leading-[1.05] text-ink-950 sm:text-5xl lg:text-6xl">
+          Your ideas deserve
+          <span class="relative whitespace-nowrap text-brand-strong">
+            better ink
+            <svg class="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none" aria-hidden="true">
+              <path d="M2 7C50 2 150 2 198 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.35" />
+            </svg>
+          </span>
+        </h1>
+
+        <p class="mt-7 max-w-xl text-lg leading-relaxed text-ink-600">
+          Inkwell is a quiet, distraction-free blogging platform. Draft a post in minutes,
+          publish it with one click, and keep every piece you have written in one tidy place.
+        </p>
+
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <% if (currentUser) { %>
+            <a href="/posts/new" class="btn btn-primary">Start writing</a>
+          <% } else { %>
+            <a href="/register" class="btn btn-primary">Start writing</a>
+          <% } %>
+          <a href="/posts" class="btn btn-secondary">Explore posts</a>
+        </div>
+
+        <dl class="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-ink-200 pt-7">
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-ink-400">Setup</dt>
+            <dd class="mt-1 font-display text-2xl font-bold text-ink-950">2 min</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-ink-400">Cost</dt>
+            <dd class="mt-1 font-display text-2xl font-bold text-ink-950">Free</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-ink-400">Posts</dt>
+            <dd class="mt-1 font-display text-2xl font-bold text-ink-950">Unlimited</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Visual: a stylised editor card -->
+      <div class="relative">
+        <div class="absolute -left-6 -top-6 hidden h-32 w-32 rounded-3xl bg-brand-soft sm:block" aria-hidden="true"></div>
+        <div class="card relative rotate-1 p-6 transition-transform duration-300 hover:rotate-0">
+          <div class="flex items-center gap-1.5">
+            <span class="h-2.5 w-2.5 rounded-full bg-ink-200"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-ink-200"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-ink-200"></span>
+            <span class="ml-auto text-xs text-ink-400">Draft</span>
+          </div>
+          <h2 class="mt-5 font-display text-2xl font-bold text-ink-950">On writing every day</h2>
+          <div class="mt-4 space-y-2.5">
+            <span class="block h-2.5 w-full rounded-full bg-ink-100"></span>
+            <span class="block h-2.5 w-11/12 rounded-full bg-ink-100"></span>
+            <span class="block h-2.5 w-10/12 rounded-full bg-ink-100"></span>
+            <span class="block h-2.5 w-full rounded-full bg-ink-100"></span>
+            <span class="block h-2.5 w-7/12 rounded-full bg-ink-100"></span>
+          </div>
+          <div class="mt-6 flex items-center justify-between border-t border-ink-200 pt-4">
+            <span class="text-xs text-ink-400">Autosaved just now</span>
+            <span class="rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-white">Publish</span>
+          </div>
+        </div>
+        <div class="card absolute -bottom-8 -right-2 hidden w-56 -rotate-3 p-4 sm:block">
+          <p class="text-xs font-semibold uppercase tracking-wider text-ink-400">Published</p>
+          <p class="mt-1.5 text-sm font-semibold text-ink-950">Notes on slow mornings</p>
+          <p class="mt-1 text-xs text-ink-600">3 min read</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value props -->
+  <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="card p-6">
+        <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-soft text-lg">&#9998;</div>
+        <h3 class="mt-4 text-lg font-bold">Write without friction</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">A plain title and body. No toolbars to fight, no settings to learn.</p>
+      </div>
+      <div class="card p-6">
+        <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-soft text-lg">&#128274;</div>
+        <h3 class="mt-4 text-lg font-bold">Your posts stay yours</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Only you can edit or delete what you wrote. Everyone else can just read it.</p>
+      </div>
+      <div class="card p-6">
+        <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-soft text-lg">&#9889;</div>
+        <h3 class="mt-4 text-lg font-bold">Published instantly</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600">Hit publish and your post is live on the explore page straight away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest posts -->
+  <section class="mx-auto max-w-6xl px-5 pb-8 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl font-bold text-ink-950">Latest from the community</h2>
+        <p class="mt-2 text-sm text-ink-600">Fresh writing from people using Inkwell right now.</p>
+      </div>
+      <a href="/posts" class="btn btn-secondary">View all posts</a>
+    </div>
+
+    <div class="mt-8">
+      <%- include('partials/blog-list', {
+        posts: posts,
+        showOwnerActions: false,
+        emptyHeading: 'Nothing published yet',
+        emptyBody: 'Be the very first person to publish a post on Inkwell.',
+        emptyCtaHref: currentUser ? '/posts/new' : '/register',
+        emptyCtaLabel: currentUser ? 'Write the first post' : 'Create an account'
+      }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,8 @@
+<div class="card grid place-items-center px-6 py-16 text-center">
+  <div class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-soft text-2xl">&#9998;</div>
+  <h3 class="mt-5 text-xl font-bold text-ink-950"><%= heading %></h3>
+  <p class="mt-2 max-w-sm text-sm leading-relaxed text-ink-600"><%= body %></p>
+  <% if (ctaHref && ctaLabel) { %>
+    <a href="<%= ctaHref %>" class="btn btn-primary mt-6"><%= ctaLabel %></a>
+  <% } %>
+</div>

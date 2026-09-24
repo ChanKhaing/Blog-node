@@ -1,0 +1,16 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+<main class="flex flex-1 items-center justify-center px-5 py-24">
+  <div class="max-w-md text-center">
+    <p class="font-display text-6xl font-bold text-brand">403</p>
+    <h1 class="mt-4 text-2xl font-bold text-ink-950">This post belongs to someone else</h1>
+    <p class="mt-2 text-sm text-ink-600">You can only edit or delete posts that you wrote yourself.</p>
+    <div class="mt-7 flex justify-center gap-3">
+      <a href="/dashboard" class="btn btn-primary">Your posts</a>
+      <a href="/posts" class="btn btn-secondary">Explore posts</a>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,35 @@
+<article class="card card-interactive flex h-full flex-col p-6">
+  <div class="flex items-center gap-2 text-xs text-ink-400">
+    <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-soft text-[11px] font-semibold text-brand-strong">
+      <%= (post.author && post.author.email ? post.author.email[0] : '?').toUpperCase() %>
+    </span>
+    <span class="truncate"><%= post.author ? post.author.email : 'Unknown author' %></span>
+    <span aria-hidden="true">&middot;</span>
+    <time datetime="<%= post.createdAt.toISOString() %>">
+      <%= post.createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
+    </time>
+  </div>
+
+  <h3 class="mt-4 text-xl font-bold leading-snug text-ink-950">
+    <a href="/posts/<%= post._id %>" class="transition-colors hover:text-brand-strong">
+      <%= post.title %>
+    </a>
+  </h3>
+
+  <p class="mt-2.5 flex-1 text-sm leading-relaxed text-ink-600"><%= post.excerpt %></p>
+
+  <div class="mt-5 flex items-center justify-between">
+    <a href="/posts/<%= post._id %>" class="text-sm font-semibold text-brand-strong hover:underline">
+      Read post &rarr;
+    </a>
+    <% if (typeof showOwnerActions !== 'undefined' && showOwnerActions) { %>
+      <div class="flex items-center gap-2">
+        <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary !px-3 !py-1.5 !text-xs">Edit</a>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"
+              onsubmit="return confirm('Delete this post? This cannot be undone.');">
+          <button type="submit" class="btn btn-danger !px-3 !py-1.5 !text-xs">Delete</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</article>

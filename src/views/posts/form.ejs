@@ -1,0 +1,56 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
+
+<main class="flex-1">
+  <div class="mx-auto max-w-3xl px-5 py-14 sm:px-8">
+    <span class="eyebrow"><%= mode === 'create' ? 'New post' : 'Editing' %></span>
+    <h1 class="mt-5 text-4xl font-bold text-ink-950">
+      <%= mode === 'create' ? 'Write a new post' : 'Edit your post' %>
+    </h1>
+    <p class="mt-3 text-ink-600">Give it a clear title, then write as much as you like.</p>
+
+    <form
+      class="card mt-8 space-y-6 p-6 sm:p-8"
+      method="POST"
+      action="<%= mode === 'create' ? '/posts' : '/posts/' + post._id + '?_method=PUT' %>"
+    >
+      <%- include('../partials/errors', { errors: errors }) %>
+
+      <div>
+        <label class="label" for="title">Title</label>
+        <input
+          class="field"
+          id="title"
+          name="title"
+          type="text"
+          maxlength="140"
+          placeholder="On writing every day"
+          value="<%= values.title %>"
+          required
+        />
+      </div>
+
+      <div>
+        <label class="label" for="content">Content</label>
+        <textarea
+          class="field min-h-72 resize-y leading-relaxed"
+          id="content"
+          name="content"
+          placeholder="Start with the thought you cannot stop having..."
+          required
+        ><%= values.content %></textarea>
+        <p class="mt-1.5 text-xs text-ink-400">Leave a blank line between paragraphs.</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 border-t border-ink-200 pt-5">
+        <button type="submit" class="btn btn-primary">
+          <%= mode === 'create' ? 'Publish post' : 'Save changes' %>
+        </button>
+        <a href="<%= mode === 'create' ? '/dashboard' : '/posts/' + post._id %>" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

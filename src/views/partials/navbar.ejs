@@ -1,0 +1,35 @@
+<header class="sticky top-0 z-40 border-b border-ink-200/70 bg-ink-50/80 backdrop-blur">
+  <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+    <a href="/" class="flex items-center gap-2.5 text-ink-950">
+      <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand text-white font-display text-lg">I</span>
+      <span class="font-display text-xl font-bold tracking-tight">Inkwell</span>
+    </a>
+
+    <div class="hidden items-center gap-1 md:flex">
+      <a href="/posts" class="btn btn-ghost <%= currentPath === '/posts' ? 'text-ink-950' : '' %>">Explore</a>
+      <% if (currentUser) { %>
+        <a href="/dashboard" class="btn btn-ghost <%= currentPath === '/dashboard' ? 'text-ink-950' : '' %>">Your posts</a>
+      <% } %>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <% if (currentUser) { %>
+        <span class="hidden text-sm text-ink-600 lg:inline"><%= currentUser.email %></span>
+        <a href="/posts/new" class="btn btn-primary">Write</a>
+        <form action="/logout" method="POST">
+          <button type="submit" class="btn btn-ghost">Log out</button>
+        </form>
+      <% } else { %>
+        <a href="/login" class="btn btn-ghost">Log in</a>
+        <a href="/register" class="btn btn-primary">Create account</a>
+      <% } %>
+    </div>
+  </nav>
+
+  <div class="flex items-center justify-center gap-1 border-t border-ink-200/60 py-2 md:hidden">
+    <a href="/posts" class="btn btn-ghost">Explore</a>
+    <% if (currentUser) { %>
+      <a href="/dashboard" class="btn btn-ghost">Your posts</a>
+    <% } %>
+  </div>
+</header>

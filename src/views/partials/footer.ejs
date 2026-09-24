@@ -1,0 +1,24 @@
+    <footer class="mt-24 border-t border-ink-200/70 bg-white">
+      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:px-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white font-display">I</span>
+            <span class="font-display text-lg font-bold">Inkwell</span>
+          </div>
+          <p class="mt-2 max-w-sm text-sm text-ink-600">
+            A calm, focused place to write and publish your ideas.
+          </p>
+        </div>
+        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600">
+          <a href="/" class="transition-colors hover:text-ink-950">Home</a>
+          <a href="/posts" class="transition-colors hover:text-ink-950">Explore</a>
+          <a href="/register" class="transition-colors hover:text-ink-950">Create account</a>
+          <a href="/login" class="transition-colors hover:text-ink-950">Log in</a>
+        </nav>
+      </div>
+      <div class="border-t border-ink-200/70 py-4 text-center text-xs text-ink-400">
+        &copy; <%= new Date().getFullYear() %> Inkwell. Built with Express, MongoDB and Tailwind CSS.
+      </div>
+    </footer>
+  </body>
+</html>

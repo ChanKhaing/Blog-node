@@ -1,0 +1,14 @@
+<% if (posts && posts.length > 0) { %>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <% posts.forEach(function (post) { %>
+      <%- include('blog-card', { post: post, showOwnerActions: typeof showOwnerActions !== 'undefined' && showOwnerActions }) %>
+    <% }); %>
+  </div>
+<% } else { %>
+  <%- include('empty-state', {
+    heading: typeof emptyHeading !== 'undefined' ? emptyHeading : 'No posts yet',
+    body: typeof emptyBody !== 'undefined' ? emptyBody : 'Once someone publishes a post, it will show up right here.',
+    ctaHref: typeof emptyCtaHref !== 'undefined' ? emptyCtaHref : null,
+    ctaLabel: typeof emptyCtaLabel !== 'undefined' ? emptyCtaLabel : null
+  }) %>
+<% } %>
